@@ -88,6 +88,13 @@ void free_massive(double* massive_of_numbers)
   free(massive_of_numbers);
 }
 
+void print_for_massive(int count_of_random_numbers, double* massive_of_numbers)
+{
+  int counter;
+  printf("\n");
+  for (counter = 0; counter < count_of_random_numbers; counter++)
+    printf("%lf\n", massive_of_numbers[counter]);
+}
 
 double bubble_sorting(int count_of_random_numbers, double* massive_of_numbers)
 {
@@ -112,28 +119,107 @@ double bubble_sorting(int count_of_random_numbers, double* massive_of_numbers)
 }
 
 
+double sorting_vibor(int count_of_random_numbers, double* massive_of_numbers)
+{
+  int counter1, counter2, minimum;
+  double rezerv;
+  clock_t begin = 0, end = 0;
+  begin = clock();
+  for (counter1 = 0; counter1 < count_of_random_numbers; counter1++)
+  {
+    minimum = counter1;
+    for (counter2 = counter1+1; counter2 < count_of_random_numbers; counter2++)
+    {
+      if (massive_of_numbers[minimum] > massive_of_numbers[counter2])
+        minimum = counter2;
+    }
+    rezerv = massive_of_numbers[minimum];
+    massive_of_numbers[minimum] = massive_of_numbers[counter1];
+    massive_of_numbers[counter1] = rezerv;
+  }
+  end = clock();
+  return (double)(end - begin) / CLOCKS_PER_SEC;
+}
+
+
+double sorting_vstavkami(int count_of_random_numbers, double* massive_of_numbers)
+{
+  int counter1, counter2;
+  double key;
+  clock_t begin = 0, end = 0;
+  begin = clock();
+  for (counter1 = 2; counter1 < count_of_random_numbers; counter1++)
+  {
+    key = massive_of_numbers[counter1];
+    counter2 = counter1 - 1;
+    while (counter2 > 0 && massive_of_numbers[counter2] > key)
+    {
+      massive_of_numbers[counter2 + 1] = massive_of_numbers[counter2];
+      counter2--;
+    }
+    massive_of_numbers[counter2 + 1] = key;
+    print_for_massive(count_of_random_numbers, massive_of_numbers);
+  }
+  end = clock();
+  return (double)(end - begin) / CLOCKS_PER_SEC;
+}
+
+
+
+double sorting_slianie(int count_of_rundom_numbers,double*massive_of_numbers)
+{
+  int counter1=2, counter2;
+  while (counter1 * counter1 < count_of_rundom_numbers)
+  {
+    for
+  }
+}
+
+
+void massive_copy(int count_of_random_numbers_in_original_massive, double* original_massive, double** copy_massive)
+{
+  int counter;
+  (*copy_massive) = (double*)malloc(sizeof(double) * count_of_random_numbers_in_original_massive);
+  for (counter = 0; counter < count_of_random_numbers_in_original_massive; counter++)
+  {
+    (*copy_massive)[counter] = original_massive[counter];
+  }
+}
+
+
 
 
 
 void all_sorting(int count_of_random_numbers, double* massive_of_numbers)
 {
-  double bubble_time;
+  double bubble_time,vibor_time,vstavki_time;
   int counter;
-  bubble_time = bubble_sorting(count_of_random_numbers, massive_of_numbers);
-  printf("\n%lf\n", bubble_time);
+  double* massive_for_sorting;
+  massive_copy(count_of_random_numbers, massive_of_numbers, &massive_for_sorting);
+  bubble_time = bubble_sorting(count_of_random_numbers, massive_for_sorting);
+  print_for_massive(count_of_random_numbers, massive_for_sorting);
+  free_massive(massive_for_sorting);
+  massive_copy(count_of_random_numbers, massive_of_numbers, &massive_for_sorting);
+  vibor_time = sorting_vibor(count_of_random_numbers,massive_for_sorting);
+  print_for_massive(count_of_random_numbers, massive_for_sorting);
+  free_massive(massive_for_sorting);
+  massive_copy(count_of_random_numbers, massive_of_numbers, &massive_for_sorting);
+  vstavki_time = sorting_vstavkami(count_of_random_numbers, massive_for_sorting);
+  print_for_massive(count_of_random_numbers, massive_for_sorting);
+  free_massive(massive_for_sorting);
+  printf("Время выполнения сортировки пузырьком: %lf с.\n", bubble_time);
+  printf("Время выполнения сортировки выбором: %lf с.\n", vibor_time);
+  printf("Время выполнения сортировки вставками: %lf с.\n", vstavki_time);
   free_massive(massive_of_numbers);
 }
 
-
-void filling_massive(int* count_of_random_numbers,int** massive_numbers)
-{
-}
 
 void main()
 {
   double minimum_of_random_numbers, maximum_of_random_numbers,bubble_time;
   int count_of_random_numbers, counter, script_number, logic_for_file_creater;
   double* massive_of_numbers;
+  system("chcp 1251>NUL");
   srand(time(0));
   printf("Enter the number of script: ");
   scanf("%d", &script_number);
