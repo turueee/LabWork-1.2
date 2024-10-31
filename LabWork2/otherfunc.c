@@ -98,14 +98,6 @@ void free_massive(double* massive_of_numbers)
   free(massive_of_numbers);
 }
 
-void print_for_massive(int count_of_random_numbers, double* massive_of_numbers)
-{
-  int counter;
-  printf("\n");
-  for (counter = 0; counter < count_of_random_numbers; counter++)
-    printf("%lf\n", massive_of_numbers[counter]);
-}
-
 
 void get_piece_of_massive(int begin_index, int end_index, double* full_massive, double** piece_of_massive)
 {

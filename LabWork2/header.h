@@ -14,7 +14,6 @@ void massive_from_file_creater(int count_of_numbers, double** massive_of_numbers
 void massive_from_keyboard(int* count_of_numbers, double** massive_of_numbers);
 void massive_from_random(int* count_of_random_numbers, double** massive_of_numbers);
 void free_massive(double* massive_of_numbers);
-void print_for_massive(int count_of_random_numbers, double* massive_of_numbers);
 void get_piece_of_massive(int begin_index, int end_index, double* full_massive, double** piece_of_massive);
 void add_piece_to_massive(int begin_index, int end_index, double* full_massive, double* piece_of_massive);
 void massive_copy(int count_of_random_numbers_in_original_massive, double* original_massive, double** copy_massive);
@@ -22,5 +21,7 @@ void massive_copy(int count_of_random_numbers_in_original_massive, double* origi
 
 void print_for_create_file(int** count_of_random_numbers);
 void print_scripts_menu();
+void print_for_massive(int count_of_random_numbers, double* massive_of_numbers);
 void print_result(double bubble_time, double vibor_time, double vstavki_time, double slianie_time, double hoara_time);
+void print_for_choose_of_enter(int* count_of_random_numbers, double** massive_of_numbers);
 #endif //!__HEADER_H__
