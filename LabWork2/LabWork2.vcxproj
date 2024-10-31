@@ -128,9 +128,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
+    <ClCompile Include="otherfunc.c" />
+    <ClCompile Include="prints.c" />
+    <ClCompile Include="sortings.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="store_of_random_numbers.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
