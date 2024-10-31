@@ -77,7 +77,7 @@ void print_for_choose_of_enter(int* count_of_random_numbers, double** massive_of
     printf("Script error! Unknown script!\n");
     system("pause");
     system("cls");
-    print_for_choose(&*count_of_random_numbers, &*massive_of_numbers);
+    print_for_choose_of_enter(&*count_of_random_numbers, &*massive_of_numbers);
     break;
   }
 }
