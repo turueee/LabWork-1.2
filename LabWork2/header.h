@@ -7,6 +7,8 @@ double sorting_vstavkami(int count_of_random_numbers, double* massive_of_numbers
 double sorting_slianie(int count_of_rundom_numbers, double* massive_of_numbers);
 void all_sorting(int count_of_random_numbers, double* massive_of_numbers);
 double sorting_hoara(int left, int right, double* massive_of_numbers);
+double sorting_shell(int count_of_random_numbers, double* massive_of_numbers);
+double sorting_counter(int count_of_random_numbers, double* massive_of_numbers);
 
 double make_random_number(double minimum_of_random_numbers, double maximum_of_random_numbers);
 void file_creater(int *count_of_random_numbers);
@@ -22,6 +24,6 @@ void massive_copy(int count_of_random_numbers_in_original_massive, double* origi
 void print_for_create_file(int** count_of_random_numbers);
 void print_scripts_menu();
 void print_for_massive(int count_of_random_numbers, double* massive_of_numbers);
-void print_result(double bubble_time, double vibor_time, double vstavki_time, double slianie_time, double hoara_time);
+void print_result(double bubble_time, double vibor_time, double vstavki_time, double slianie_time, double hoara_time, double shell_time,double counter_time);
 void print_for_choose_of_enter(int* count_of_random_numbers, double** massive_of_numbers);
 #endif //!__HEADER_H__

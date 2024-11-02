@@ -17,17 +17,22 @@ void print_scripts_menu()
 }
 
 
-void print_result(double bubble_time, double vibor_time, double vstavki_time, double slianie_time, double hoara_time)
+void print_result(double bubble_time, double vibor_time, double vstavki_time, double slianie_time, double hoara_time,double shell_time,double counter_time)
 {
-  printf("\n\t+---------------+---------------+---------------+---------------+---------------+");
-  printf("\n\t|                      Algorithm execution time in seconds                      |");
-  printf("\n\t+---------------+---------------+---------------+---------------+---------------+");
-  printf("\n\t|  Bubble sort  | Selection sort| Insertion sort|   Merge sort  |   Quicksort   |");
-  printf("\n\t+---------------+---------------+---------------+---------------+---------------+");
-  printf("\n\t|\t\t|\t\t|\t\t|\t\t|\t\t|");
-  printf("\n\t|\t%.3lf\t|\t%.3lf\t|\t%.3lf\t|\t%.3lf\t|\t%.3lf\t|", bubble_time, vibor_time, vstavki_time, slianie_time, hoara_time);
-  printf("\n\t|\t\t|\t\t|\t\t|\t\t|\t\t|");
-  printf("\n\t+---------------+---------------+---------------+---------------+---------------+");
+  system("cls");
+  printf("\n+---------------+---------------+---------------+---------------+---------------+---------------+---------------+");
+  printf("\n|                                      Algorithm execution time in seconds                                      |");
+  printf("\n+---------------+---------------+---------------+---------------+---------------+---------------+---------------+");
+  printf("\n|                     Range                     |       Count of numbers        |            Script             |");
+  printf("\n+---------------+---------------+---------------+---------------+---------------+---------------+---------------+");
+  //printf("\n\t|\t%lf\t%lf\t%d\t%d", min_in_range, max_in_range, count_of_numbers, script);
+  printf("\n+---------------+---------------+---------------+---------------+---------------+---------------+---------------+");
+  printf("\n|  Bubble sort  | Selection sort| Insertion sort|   Merge sort  |   Quicksort   |   Shell sort  |  Counter sort |");
+  printf("\n+---------------+---------------+---------------+---------------+---------------+---------------+---------------+");
+  printf("\n|\t\t|\t\t|\t\t|\t\t|\t\t|\t\t|\t\t|");
+  printf("\n|\t%.3lf\t|\t%.3lf\t|\t%.3lf\t|\t%.3lf\t|\t%.3lf\t|\t%.3lf\t|\t%.3lf\t|", bubble_time, vibor_time, vstavki_time, slianie_time, hoara_time,shell_time,counter_time);
+  printf("\n|\t\t|\t\t|\t\t|\t\t|\t\t|\t\t|\t\t|");
+  printf("\n+---------------+---------------+---------------+---------------+---------------+---------------+---------------+");
 }
 
 
@@ -45,6 +50,7 @@ void print_for_create_file(int** count_of_random_numbers)
     printf("Enter the count of numbers in file: ");
     scanf("%d", count_of_random_numbers);
   }
+  system("cls");
 }
 
 
@@ -60,6 +66,7 @@ void print_for_massive(int count_of_random_numbers, double* massive_of_numbers)
 void print_for_choose_of_enter(int* count_of_random_numbers, double** massive_of_numbers)
 {
   int script_number;
+  print_scripts_menu();
   scanf("%d", &script_number);
   switch (script_number)
   {

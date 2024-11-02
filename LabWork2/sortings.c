@@ -145,10 +145,64 @@ double sorting_hoara(int left, int right, double* massive_of_numbers)
 }
 
 
+double sorting_shell(int count_of_random_numbers, double* massive_of_numbers)
+{
+  int counter1, counter2, step;
+  double reserv;
+  clock_t begin = 0, end = 0;
+  begin = clock();
+  for (step = count_of_random_numbers/2;step>0;step/=2)
+    for (counter1 = step; counter1 < count_of_random_numbers; counter1++)
+    {
+      reserv = massive_of_numbers[counter1];
+      for (counter2 = counter1; counter2 >= step; counter2 -= step)
+      {
+        if (reserv < massive_of_numbers[counter2 - step])
+          massive_of_numbers[counter2] = massive_of_numbers[counter2 - step];
+        else
+          break;
+      }
+      massive_of_numbers[counter2] = reserv;
+    }
+  end = clock();
+  return (double)(end - begin) / CLOCKS_PER_SEC;
+}
+
+
+double sorting_counter(int count_of_random_numbers, double* massive_of_numbers)
+{
+  int counter1,counter2;
+  double reserv;
+  double* copy;
+  clock_t begin = 0, end = 0;
+  begin = clock();
+  massive_copy(count_of_random_numbers, massive_of_numbers, &copy);
+  int* massive_of_indexes = (int*)malloc(sizeof(int) * count_of_random_numbers);
+  for (counter1 = 0; counter1 < count_of_random_numbers; counter1++)
+    massive_of_indexes[counter1] = 0;
+  for (counter1 = 0; counter1 < count_of_random_numbers; counter1++)
+  {
+    reserv = copy[counter1];
+    for (counter2 = 0; counter2 < count_of_random_numbers; counter2++)
+    {
+      if (copy[counter1] > copy[counter2])
+        massive_of_indexes[counter1] += 1;
+    }
+  }
+  for (counter1 = 0; counter1 < count_of_random_numbers; counter1++)
+  {
+    massive_of_numbers[massive_of_indexes[counter1]] = copy[counter1];
+  }
+  free(massive_of_indexes);
+  free(copy);
+  end = clock();
+  return (double)(end - begin) / CLOCKS_PER_SEC;
+}
+
 
 void all_sorting(int count_of_random_numbers, double* massive_of_numbers)
 {
-  double bubble_time, vibor_time, vstavki_time, slianie_time, hoara_time;
+  double bubble_time, vibor_time, vstavki_time, slianie_time, hoara_time,shell_time,counter_time;
   double* massive_for_sorting;
   massive_copy(count_of_random_numbers, massive_of_numbers, &massive_for_sorting);
   bubble_time = bubble_sorting(count_of_random_numbers, massive_for_sorting);
@@ -165,6 +219,12 @@ void all_sorting(int count_of_random_numbers, double* massive_of_numbers)
   massive_copy(count_of_random_numbers, massive_of_numbers, &massive_for_sorting);
   hoara_time = sorting_hoara(0, count_of_random_numbers - 1, massive_for_sorting);
   free_massive(massive_for_sorting);
-  print_result(bubble_time, vibor_time, vstavki_time, slianie_time, hoara_time);
+  massive_copy(count_of_random_numbers, massive_of_numbers, &massive_for_sorting);
+  shell_time = sorting_shell(count_of_random_numbers, massive_for_sorting);
+  free_massive(massive_for_sorting);
+  massive_copy(count_of_random_numbers, massive_of_numbers, &massive_for_sorting);
+  counter_time = sorting_counter(count_of_random_numbers, massive_for_sorting);
+  free_massive(massive_for_sorting);
+  print_result(bubble_time, vibor_time, vstavki_time, slianie_time, hoara_time,shell_time,counter_time);
   free_massive(massive_of_numbers);
 }
