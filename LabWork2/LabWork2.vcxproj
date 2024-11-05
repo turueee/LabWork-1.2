@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dop.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="otherfunc.c" />
     <ClCompile Include="prints.c" />

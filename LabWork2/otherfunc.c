@@ -66,12 +66,12 @@ void massive_from_keyboard(int* count_of_numbers, double** massive_of_numbers)
 {
   int counter;
   double number_from_keyboard;
-  printf("Enter the count of numbers: ");
+  printf("¬ведите количество чисел в массиве: ");
   scanf("%d", count_of_numbers);
   *massive_of_numbers = (double*)malloc(sizeof(double) * *count_of_numbers);
   for (counter = 0; counter < *count_of_numbers; counter++)
   {
-    printf("Enter the massive_of_numbers[%d]: ", counter);
+    printf("¬ведите massive_of_numbers[%d]: ", counter);
     scanf("%lf", &number_from_keyboard);
     (*massive_of_numbers)[counter] = number_from_keyboard;
   }
@@ -82,11 +82,11 @@ void massive_from_random(int* count_of_random_numbers, double** massive_of_numbe
 {
   double minimum_of_random_numbers, maximum_of_random_numbers;
   int counter;
-  printf("Enter the minimum number to generate: ");
+  printf("¬ведите минимум генерируемого чисел: ");
   scanf("%lf", &minimum_of_random_numbers);
-  printf("Enter the maximum number to generate: ");
+  printf("¬ведите максимум генерируемых чисел: ");
   scanf("%lf", &maximum_of_random_numbers);
-  printf("Enter the count of generated numbers: ");
+  printf("¬ведите количество генерируемых числе: ");
   scanf("%d", count_of_random_numbers);
   (*massive_of_numbers) = (double*)malloc(sizeof(double) * *count_of_random_numbers);
   for (counter = 0; counter < *count_of_random_numbers; counter++)

@@ -27,6 +27,9 @@
     <ClCompile Include="prints.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="dop.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="store_of_random_numbers.txt">
