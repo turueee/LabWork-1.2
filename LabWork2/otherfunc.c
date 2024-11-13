@@ -25,10 +25,37 @@ void file_creater(int *count_of_random_numbers)
   double maximum_of_random_numbers, minimum_of_random_numbers;
   FILE* file_of_numbers;
   double random_number;
+  printf("¬ведите кодичество генерируемых чисел: ");
+  scanf("%lf", &minimum_of_random_numbers);
+  printf("¬ведите верхний предел генерируемых чисел: ");
+  scanf("%lf",&maximum_of_random_numbers);
+  printf("¬ведите нижний предел генерируемых чисел: ");
+  scanf("%d", count_of_random_numbers);
+  file_of_numbers = fopen("store_of_random_numbers.txt", "w");
+  for (counter = 0; counter < *count_of_random_numbers; counter++)
+  {
+    if (file_of_numbers != NULL)
+    {
+      random_number = make_random_number(minimum_of_random_numbers, maximum_of_random_numbers);
+      fprintf(file_of_numbers, "%lf\n", random_number);
+    }
+    else
+      printf("FILE ERROR!!!");
+  }
+  fclose(file_of_numbers);
+}
+
+
+void file_creater_vector(int* count_of_random_numbers)
+{
+  int counter;
+  double maximum_of_random_numbers, minimum_of_random_numbers;
+  FILE* file_of_numbers;
+  double random_number;
   printf("Enter the minimum number to generate: ");
   scanf("%lf", &minimum_of_random_numbers);
   printf("Enter the maximum number to generate: ");
-  scanf("%lf",&maximum_of_random_numbers);
+  scanf("%lf", &maximum_of_random_numbers);
   printf("Enter the count of generated numbers: ");
   scanf("%d", count_of_random_numbers);
   file_of_numbers = fopen("store_of_random_numbers.txt", "w");
@@ -62,6 +89,22 @@ void massive_from_file_creater(int count_of_numbers, double** massive_of_numbers
 }
 
 
+void vector_from_file_creater(int count_of_numbers, double** massive_of_numbers)
+{
+  int counter;
+  FILE* file_of_numbers;
+  double number_from_file;
+  *massive_of_numbers = (double*)malloc(sizeof(double) * count_of_numbers);
+  file_of_numbers = fopen("store_of_random_numbers.txt", "r");
+  for (counter = 0; counter < count_of_numbers; counter++)
+  {
+    fscanf(file_of_numbers, "%lf", &number_from_file);
+    (*massive_of_numbers)[counter] = number_from_file;
+  }
+  fclose(file_of_numbers);
+}
+
+
 void massive_from_keyboard(int* count_of_numbers, double** massive_of_numbers)
 {
   int counter;
@@ -72,6 +115,22 @@ void massive_from_keyboard(int* count_of_numbers, double** massive_of_numbers)
   for (counter = 0; counter < *count_of_numbers; counter++)
   {
     printf("¬ведите massive_of_numbers[%d]: ", counter);
+    scanf("%lf", &number_from_keyboard);
+    (*massive_of_numbers)[counter] = number_from_keyboard;
+  }
+}
+
+
+void vector_from_keyboard(int* count_of_numbers, double** massive_of_numbers)
+{
+  int counter;
+  double number_from_keyboard;
+  printf("¬ведите размерностей вектора: ");
+  scanf("%d", count_of_numbers);
+  *massive_of_numbers = (double*)malloc(sizeof(double) * *count_of_numbers);
+  for (counter = 0; counter < *count_of_numbers; counter++)
+  {
+    printf("¬ведите координату вектора %d: ", counter);
     scanf("%lf", &number_from_keyboard);
     (*massive_of_numbers)[counter] = number_from_keyboard;
   }
@@ -92,6 +151,23 @@ void massive_from_random(int* count_of_random_numbers, double** massive_of_numbe
   for (counter = 0; counter < *count_of_random_numbers; counter++)
     (*massive_of_numbers)[counter] = make_random_number(minimum_of_random_numbers, maximum_of_random_numbers);
 }
+
+
+void vector_from_random(int* count_of_random_numbers, double** massive_of_numbers)
+{
+  double minimum_of_random_numbers, maximum_of_random_numbers;
+  int counter;
+  printf("¬ведите минимум генерируемого чисел: ");
+  scanf("%lf", &minimum_of_random_numbers);
+  printf("¬ведите максимум генерируемых чисел: ");
+  scanf("%lf", &maximum_of_random_numbers);
+  printf("¬ведите количество размерностей вектора: ");
+  scanf("%d", count_of_random_numbers);
+  (*massive_of_numbers) = (double*)malloc(sizeof(double) * *count_of_random_numbers);
+  for (counter = 0; counter < *count_of_random_numbers; counter++)
+    (*massive_of_numbers)[counter] = make_random_number(minimum_of_random_numbers, maximum_of_random_numbers);
+}
+
 
 void free_massive(double* massive_of_numbers)
 {
@@ -129,4 +205,22 @@ void massive_copy(int count_of_random_numbers_in_original_massive, double* origi
   {
     (*copy_massive)[counter] = original_massive[counter];
   }
+}
+
+
+void add_data_to_file(int count_of_random_numbers, double ** massive_of_numbers)
+{
+  int counter;
+  FILE* file_of_numbers;
+  file_of_numbers = fopen("result_massive.txt", "w");
+  for (counter = 0; counter < count_of_random_numbers; counter++)
+  {
+    if (file_of_numbers != NULL)
+    {
+      fprintf(file_of_numbers, "%lf\n", massive_of_numbers[counter]);
+    }
+    else
+      printf("FILE ERROR!!!");
+  }
+  fclose(file_of_numbers);
 }

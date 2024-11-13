@@ -134,6 +134,7 @@
     <ClCompile Include="sortings.c" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="result_massive.txt" />
     <Text Include="store_of_random_numbers.txt" />
   </ItemGroup>
   <ItemGroup>

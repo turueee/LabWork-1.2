@@ -35,6 +35,9 @@
     <Text Include="store_of_random_numbers.txt">
       <Filter>Исходные файлы</Filter>
     </Text>
+    <Text Include="result_massive.txt">
+      <Filter>Исходные файлы</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h">

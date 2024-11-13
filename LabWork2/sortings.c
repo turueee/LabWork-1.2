@@ -218,6 +218,7 @@ void all_sorting(int count_of_random_numbers, double* massive_of_numbers)
   free_massive(massive_for_sorting);
   massive_copy(count_of_random_numbers, massive_of_numbers, &massive_for_sorting);
   hoara_time = sorting_hoara(0, count_of_random_numbers - 1, massive_for_sorting);
+  add_data_to_file(count_of_random_numbers, massive_for_sorting);
   free_massive(massive_for_sorting);
   massive_copy(count_of_random_numbers, massive_of_numbers, &massive_for_sorting);
   shell_time = sorting_shell(count_of_random_numbers, massive_for_sorting);
@@ -226,5 +227,4 @@ void all_sorting(int count_of_random_numbers, double* massive_of_numbers)
   counter_time = sorting_counter(count_of_random_numbers, massive_for_sorting);
   free_massive(massive_for_sorting);
   print_result(bubble_time, vibor_time, vstavki_time, slianie_time, hoara_time,shell_time,counter_time);
-  free_massive(massive_of_numbers);
 }
